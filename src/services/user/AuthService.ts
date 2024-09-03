@@ -35,6 +35,7 @@ class AuthUserService {
         expiresIn: "3d",
       }
     );
+
     return {
       id: user.id,
       name: user.name,

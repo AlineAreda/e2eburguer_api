@@ -13,6 +13,10 @@ class CreateUserService {
             throw new Error('Nome, e-mail e senha são obrigatórios.');
         }
 
+        if (!name || name.trim().split(' ').length < 2) {
+          throw new Error('Preencha com nome e sobrenome.');
+      }
+
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !EMAIL_REGEX.test(email)) {
             throw new Error('Formato de e-mail inválido');

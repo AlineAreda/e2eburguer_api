@@ -11,6 +11,7 @@ class AuthUserController {
         if (!email || !password) {
             return res.status(400).json({ error: 'E-mail e senha são obrigatórios.' });
         }
+
         try {
             const auth = await authUserService.execute({
                 email,
