@@ -14,8 +14,8 @@
             "description": "API de teste para desenvolvedores"
         },
         {
-            "url": "https://e2etreinamentos.com/e2eburguer-api/v1",
-            "description": "API de produção - Pendente de implementação"
+            "url": "https://e2e-burguer-backend.vercel.app",
+            "description": "API de para Testes em HML"
         }
     ],
     "paths": {

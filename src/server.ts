@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Define as rotas
+
 app.use(router);
 
 
@@ -27,12 +27,13 @@ app.use(
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
+      console.log("Middleware capturou um erro:", err.message);
         return res.status(400).json({
             error: err.message
         });
     }
 
-
+    console.log("Erro desconhecido no middleware.");
     return res.status(500).json({
         status: 'error',
         message: 'Internal server error.'

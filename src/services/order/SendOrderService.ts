@@ -11,7 +11,6 @@ class SendOrderService {
         }
 
         try {
-            // Verifica se o pedido existe
             const order = await prismaClient.order.findUnique({
                 where: { id: order_id },
             });
@@ -20,7 +19,7 @@ class SendOrderService {
                 throw new Error("Pedido não encontrado.");
             }
 
-            // Atualiza o status do pedido
+
             const updatedOrder = await prismaClient.order.update({
                 where: { id: order_id },
                 data: { draft: false }

@@ -19,7 +19,6 @@ class RemoveOrderService {
       throw new Error(error.message);
 
       if (error.code === "P2025") {
-        // Erro específico do Prisma para "Registro não encontrado"
         throw new Error("Pedido não encontrado");
       }
       throw new Error("Erro ao remover o pedido");

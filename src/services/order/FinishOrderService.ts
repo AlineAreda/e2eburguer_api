@@ -11,7 +11,6 @@ class FinishOrderService {
     }
 
     try {
-      // Verificação da existência do pedido
       const existingOrder = await prismaClient.order.findUnique({
         where: { id: order_id },
       });
@@ -20,12 +19,10 @@ class FinishOrderService {
         throw new Error("Pedido não encontrado.");
       }
 
-      // Verificação se o pedido já está finalizado
       if (existingOrder.status === true) {
         throw new Error("Pedido já está finalizado.");
       }
 
-      // Atualização do status do pedido para finalizado
       const order = await prismaClient.order.update({
         where: {
           id: order_id,

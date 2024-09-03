@@ -5,7 +5,7 @@ class SendOrderController {
     async handle(req: Request, res: Response) {
         const { order_id } = req.body;
 
-        // Validação de entrada
+
         if (!order_id) {
             return res.status(400).json({ error: "ID do pedido é necessário." });
         }
@@ -18,7 +18,7 @@ class SendOrderController {
         } catch (error) {
             console.error("Erro ao enviar o pedido:", error);
 
-            // Personalização do código de status baseado no tipo de erro
+
             if (error.message.includes("Pedido não encontrado")) {
                 return res.status(404).json({ error: error.message });
             }

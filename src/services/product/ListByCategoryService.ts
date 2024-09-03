@@ -7,7 +7,6 @@ interface ProductRequest {
 class ListByCategoryService {
     async execute({ category_id }: ProductRequest) {
         try {
-            // Verifica se a categoria existe
             const category = await prismaClient.category.findUnique({
                 where: {
                     id: category_id,
@@ -18,7 +17,6 @@ class ListByCategoryService {
                 throw new Error('Categoria não encontrada');
             }
 
-            // Execute a consulta para obter produtos da categoria
             const findByCategory = await prismaClient.product.findMany({
                 where: {
                     category_id: category_id,
@@ -27,7 +25,6 @@ class ListByCategoryService {
 
             return findByCategory;
         } catch (error) {
-            // Tratamento de erros
             console.error(error);
 
             if (error instanceof Error) {

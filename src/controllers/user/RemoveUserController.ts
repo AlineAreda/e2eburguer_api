@@ -3,7 +3,6 @@ import { RemoveUserService } from '../../services/user/RemoveUserService';
 
 class RemoveUserController {
     async handle(req: Request, res: Response) {
-        // Aserção do tipo 'string' para 'user_id'
         const user_id = req.query.user_id as string;
 
         if (!user_id) {

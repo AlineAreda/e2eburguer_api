@@ -7,7 +7,7 @@ class DetailOrderController {
 
     const detailOrderService = new DetailOrderService();
 
-    // Validação de entrada
+
     if (!order_id) {
       return res.status(400).json({ error: "ID do pedido é necessário." });
     }
@@ -15,7 +15,7 @@ class DetailOrderController {
     try {
       const orders = await detailOrderService.execute({ order_id });
 
-      // Verificação se o pedido existe e possui itens
+
       if (!orders || orders.length === 0) {
         return res.status(404).json({ error: "Pedido não encontrado ou sem itens." });
       }
@@ -24,7 +24,7 @@ class DetailOrderController {
     } catch (error) {
       console.error("Erro ao obter detalhes do pedido:", error);
 
-      // Personalização do código de status baseado no tipo de erro
+
       if (error.message.includes("Pedido não encontrado")) {
         return res.status(404).json({ error: error.message });
       }

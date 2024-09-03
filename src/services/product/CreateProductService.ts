@@ -10,18 +10,16 @@ interface ProductRequest {
 
 class CreateProductService {
     async execute({ name, price, description, banner, category_id }: ProductRequest) {
-        // Validação dos campos obrigatórios
         if (!name || !price || !description || !category_id) {
             throw new Error('Campos obrigatórios não preenchidos');
         }
 
-        // Converter o preço para um número para validação
         const numericPrice = parseFloat(price);
         if (isNaN(numericPrice)) {
             throw new Error('Preço inválido');
         }
 
-        // Verificar se a categoria existe
+
         const category = await prismaClient.category.findUnique({
             where: {
                 id: category_id

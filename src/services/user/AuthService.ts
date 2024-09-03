@@ -23,7 +23,7 @@ class AuthUserService {
       throw new Error("Usuário e/ou Senha incorretos.");
     }
 
-    //gerar token
+
     const token = sign(
       {
         name: user.name,

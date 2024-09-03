@@ -7,7 +7,7 @@ class CreateOrderController {
 
     const createOrderService = new CreateOrderService();
 
-    // Validação de entrada
+
     if (typeof table !== "number" || isNaN(table) || table <= 0) {
       return res
         .status(400)
@@ -21,7 +21,7 @@ class CreateOrderController {
       return res.status(201).json(order);
     } catch (error) {
       console.error("Erro ao criar o pedido:", error);
-      // Personalização do código de status baseado no tipo de erro
+
       if (error instanceof Error) {
         if (
           error.message.includes("Número da mesa inválido") ||

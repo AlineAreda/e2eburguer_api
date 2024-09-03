@@ -6,6 +6,7 @@ class CreateUserController {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
+      console.log("Dados obrigatórios faltando.");
       return res
         .status(400)
         .json({ error: "Nome, e-mail e senha são obrigatórios." });
@@ -19,7 +20,7 @@ class CreateUserController {
         email,
         password,
       });
-
+      console.log("Usuário criado com sucesso:", user);
       return res.status(201).json(user);
     } catch (error) {
       console.error("Erro na criação do usuário:", error);
@@ -31,9 +32,10 @@ class CreateUserController {
         error.message === "Formato de e-mail inválido." ||
         error.message.includes("Senha inválida")
       ) {
+        console.log("Erro de validação capturado:", error.message);
         return res.status(400).json({ error: error.message });
       }
-
+      console.log("Erro desconhecido:", error.message);
       return res.status(500).json({ error: "Erro interno no servidor" });
     }
   }

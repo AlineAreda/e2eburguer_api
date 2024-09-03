@@ -7,7 +7,7 @@ class RemoveOrderController {
 
         const removeOrder = new RemoveOrderService();
         
-        // Validação de entrada
+
         if (!order_id) {
           return res.status(400).json({ error: "ID do pedido é necessário." });
       }
@@ -17,7 +17,7 @@ class RemoveOrderController {
         } catch (error) {
             console.error("Erro ao remover o pedido:", error);
             
-            // código de status baseado no tipo de erro
+
             if (error.message === 'Pedido não encontrado') {
                 return res.status(404).json({ error: error.message });
             }
